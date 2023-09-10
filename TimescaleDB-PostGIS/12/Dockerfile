@@ -57,6 +57,15 @@ RUN set -xe; \
 	pip3 install --no-deps -r requirements.txt; \
 	rm -rf /var/lib/apt/lists/*;
 
+# Install Azure CLI
+RUN set -xe; \
+    apt-get update; \
+    apt-get install -y --no-install-recommends \
+      curl; \
+    curl -L https://aka.ms/InstallAzureCli | bash; \
+    rm -fr /tmp/* ; \
+    rm -rf /var/lib/apt/lists/*; \
+
 # Change the uid of postgres to 26
 RUN usermod -u 26 postgres
 USER 26
