@@ -61,10 +61,11 @@ RUN set -xe; \
 RUN set -xe; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
-      curl; \
+      curl \
+    ; \
     curl -L https://aka.ms/InstallAzureCli | bash; \
     rm -fr /tmp/* ; \
-    rm -rf /var/lib/apt/lists/*; \
+    rm -rf /var/lib/apt/lists/*;
 
 # Change the uid of postgres to 26
 RUN usermod -u 26 postgres
