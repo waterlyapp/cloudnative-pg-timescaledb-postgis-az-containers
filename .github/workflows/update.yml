@@ -15,8 +15,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.REPO_GHA_PAT }}
+#        with:
+#          token: ${{ secrets.REPO_GHA_PAT }}
       - name: Run update script
         uses: nick-fields/retry@v2
         with:
@@ -32,23 +32,23 @@ jobs:
         run: |
           git status
           git diff
-      - name: Temporarily disable "include administrators" branch protection
-        if: ${{ always() && github.ref == 'refs/heads/main' }}
-        id: disable_include_admins
-        uses: benjefferies/branch-protection-bot@1.0.8
-        with:
-          access_token: ${{ secrets.REPO_GHA_PAT }}
-          branch: main
-          enforce_admins: false
+#      - name: Temporarily disable "include administrators" branch protection
+#        if: ${{ always() && github.ref == 'refs/heads/main' }}
+#        id: disable_include_admins
+#        uses: benjefferies/branch-protection-bot@1.0.8
+#        with:
+#          access_token: ${{ secrets.REPO_GHA_PAT }}
+#          branch: main
+#          enforce_admins: false
       - uses: EndBug/add-and-commit@v9
         with:
-          author_name: imusmanmalik
-          author_email: usmanmalik@engineer.com
+          author_name: waterlyapp
+          author_email: admin@waterly.com
           message: 'chore: Daily Update'
-      - name: Enable "include administrators" branch protection
-        uses: benjefferies/branch-protection-bot@1.0.8
-        if: ${{ always() && github.ref == 'refs/heads/main' }}
-        with:
-          access_token: ${{ secrets.REPO_GHA_PAT }}
-          branch: main
-          enforce_admins: ${{ steps.disable_include_admins.outputs.initial_status }}
+#      - name: Enable "include administrators" branch protection
+#        uses: benjefferies/branch-protection-bot@1.0.8
+#        if: ${{ always() && github.ref == 'refs/heads/main' }}
+#        with:
+#          access_token: ${{ secrets.REPO_GHA_PAT }}
+#          branch: main
+#          enforce_admins: ${{ steps.disable_include_admins.outputs.initial_status }}
