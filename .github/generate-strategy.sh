@@ -25,7 +25,9 @@ for version in */; do
 	[[ $version == src/ ]] && continue
 	postgis_versions+=("$version")
 done
-postgis_versions=("${postgis_versions[@]%/}")
+
+# WATERLY EDIT - We're only generating images for version 15
+postgis_versions=("15")
 
 # Sort the version numbers with highest first
 mapfile -t postgis_versions < <(IFS=$'\n'; sort -rV <<< "${postgis_versions[*]}")
