@@ -63,7 +63,7 @@ RUN set -xe; \
     apt-get install -y --no-install-recommends \
       curl \
     ; \
-    curl -L https://aka.ms/InstallAzureCli | bash; \
+    curl -sL https://aka.ms/InstallAzureCLIDeb | bash; \
     rm -fr /tmp/* ; \
     rm -rf /var/lib/apt/lists/*;
 
